@@ -12,7 +12,7 @@ module.exports = {
 
 function connect() {
   const uri = process.env.DB_URI;
-  mongoose.connect(uri, { useMongoClient: true });
+  mongoose.connect(uri, { useNewUrlParser: true });
 }
 
 function disconnect() {

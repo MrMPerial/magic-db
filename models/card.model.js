@@ -5,3 +5,11 @@ const CardSchema = mongoose.Schema({
 });
 
 let Card = module.exports = mongoose.model('Card', CardSchema);
+
+module.exports.addToDB = (title) => {
+  let newCard = new Card({
+    title: title
+  });
+
+  return newCard.save();
+}
