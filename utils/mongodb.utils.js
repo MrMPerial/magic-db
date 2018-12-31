@@ -11,7 +11,7 @@ module.exports = {
 };
 
 function connect() {
-  const uri = DATABASE;
+  const uri = process.env.DB_URI;
   mongoose.connect(uri, { useMongoClient: true });
 }
 
