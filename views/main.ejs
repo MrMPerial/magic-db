@@ -19,7 +19,8 @@
 
   <div class="row">
     <div class="col"></div>
-    <div class="col-6">
+
+    <div class="col-3">
       <% if (card) { %>
       <h1>
         <%= card[0].name %>
@@ -27,18 +28,47 @@
       <img src="<%= card[0].imageUrl %>" alt="">
       <% } %>
     </div>
+
+    <div class="col-3">
+      <% if (card) { %>
+      <h2>Mana Cost: <%= card[0].manaCost %></h2>
+      <h2>Color Identity: <%= card[0].colorIdentity %></h2>
+      <h2>Type: <%= card[0].type %></h2>
+      <h2>Rarity: <%= card[0].rarity %></h2>
+      <h2>Set Name: <%= card[0].setName %></h2>
+      <h2>Artist: <%= card[0].artist %></h2>
+      <h2>Number: <%= card[0].number %></h2>
+      <h2>Power: <%= card[0].power %></h2>
+      <h2>Toughness: <%= card[0].toughness %></h2>
+      <h2>Multi-Verse ID: <%= card[0].multiverseid %></h2>
+      <% } %>
+    </div>
+
     <div class="col"></div>
   </div>
 
   <div class="row">
     <div class="col"></div>
     <div class="col-6">
-      <form class="" ref="newCard" action="/cards/addToDB" method="post">
+      <% if (card) { %>
+      <form class="" ref="newCard" action="/cards/addNewCard" method="post">
         <div class="form-group">
-          <input type="hidden" class="form-control" name="title" value="" placeholder="Card Title">
+          <input type="hidden" class="form-control" value="<%= card[0].name %>" name="cardName">
+          <input type="hidden" class="form-control" value="<%= card[0].imageUrl %>" name="imageUrl">
+          <input type="hidden" class="form-control" value="<%= card[0].manaCost %>" name="manaCost">
+          <input type="hidden" class="form-control" value="<%= card[0].colorIdentity %>" name="colorIdentity">
+          <input type="hidden" class="form-control" value="<%= card[0].type %>" name="type">
+          <input type="hidden" class="form-control" value="<%= card[0].rarity %>" name="rarity">
+          <input type="hidden" class="form-control" value="<%= card[0].setName %>" name="setName">
+          <input type="hidden" class="form-control" value="<%= card[0].artist %>" name="artist">
+          <input type="hidden" class="form-control" value="<%= card[0].number %>" name="number">
+          <input type="hidden" class="form-control" value="<%= card[0].power %>" name="power">
+          <input type="hidden" class="form-control" value="<%= card[0].toughness %>" name="toughness">
+          <input type="hidden" class="form-control" value="<%= card[0].multiverseid %>" name="multiverseid">
         </div>
         <button class="btn btn-success" type="submit" name="button">Add Your Card</button>
       </form>
+      <% } %>
     </div>
     <div class="col"></div>
   </div>
