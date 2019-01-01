@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mtg = require('mtgsdk');
 
 const CardSchema = mongoose.Schema({
   title: String

@@ -25,7 +25,7 @@ mongodb.createEventListeners();
 mongodb.connect();
 
 app.get('/', (req, res) => {
-  res.render('main');
+  res.render('main', { card: null });
 });
 
 app.use('/cards', cards);
