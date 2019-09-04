@@ -37,3 +37,21 @@ module.exports.addToDB = (package) => {
 
   return newCard.save();
 }
+
+module.exports.getAllCards = () => {
+
+  Card.find({}, function (error, documents) {
+    let allCards = [];
+
+    for ( let i = 0; i < documents.length; i++ ) {
+      allCards.push(documents[i].imageUrl);
+    }
+    return allCards;
+  });
+
+}
+
+module.exports.removeCard = (card) => {
+
+  Card.findById({ _id: card }).deleteOne().exec();
+}

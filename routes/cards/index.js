@@ -3,7 +3,9 @@ const mtg = require('mtgsdk');
 
 const Card = require('../../models/card.model');
 
-// GET REQUESTS
+// GET REQUESTS //
+
+// Search MTG Database
 router.get('/findCard', (req, res) => {
   let title = req.query.title;
   let result = [];
@@ -19,12 +21,32 @@ router.get('/findCard', (req, res) => {
     })
 });
 
-// POST REQUESTS
+// Show All of the Saved Cards in my Databse
+router.get('/allCards', (req, res) => {
+
+  Card.find({}, function (error, documents) {
+    if (error) {
+      console.log(error);
+    }
+
+    let allCards = [];
+
+    for ( let i = 0; i < documents.length; i++ ) {
+      allCards.push(documents[i]);
+    }
+
+    res.render('allCards', { allCards: allCards });
+  });
+
+});
+
+// POST REQUESTS //
+
+// Add a New Card to my Database
 router.post('/addNewCard', (req, res) => {
 
   let package = {
     cardName: req.body.cardName,
-    image: req.body.imageUrl,
     manaCost: req.body.manaCost,
     colorIdentity: req.body.colorIdentity,
     type: req.body.type,
@@ -34,12 +56,32 @@ router.post('/addNewCard', (req, res) => {
     number: req.body.number,
     power: req.body.power,
     toughness: req.body.toughness,
-    multiverseid: req.body.multiverseid
+    multiverseid: req.body.multiverseid,
+    imageUrl: req.body.imageUrl,
   };
 
   Card.addToDB(package);
 
-  res.status(200).end('Your card has been added to the system.');
+  res.render('main', { card: null });
+});
+
+router.post('/removeCard', (req, res) => {
+
+  Card.removeCard(req.body.cardId);
+
+  Card.find({}, function (error, documents) {
+    if (error) {
+      console.log(error);
+    }
+
+    let allCards = [];
+
+    for ( let i = 0; i < documents.length; i++ ) {
+      allCards.push(documents[i]);
+    }
+
+    res.render('allCards', { allCards: allCards });
+  });
 });
 
 module.exports = router;

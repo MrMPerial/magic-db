@@ -1,0 +1,42 @@
+<%- include('header'); -%>
+
+<div class="row pad-top">
+  <div class="col-12">
+    <% if (allCards) { %>
+    <div>
+      <ul class="allCards">
+        <% allCards.forEach(function(card){ %>
+          <li>
+            <img src="<%= card.imageUrl %>" alt="<%= card.cardName %>">
+            <div class="row">
+              <div class="col-12 pad-top">
+                <!-- <button type="button" class="btn btn-info d-flex aCbtn" name="button">View Card</button> -->
+                <form class="" action="/cards/removeCard" method="post">
+                  <input type="hidden" name="cardId" value="<%= card._id %>">
+                  <button type="submit" name="button" class="btn btn-danger d-flex dBtn">Delete Card</button>
+                </form>
+              </div>
+            </div>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+    <% } %>
+  </div>
+  <% if (allCards.length == 0) { %>
+    <div class="row">
+      <div class="col">
+
+      </div>
+      <div class="col-6">
+        <h1 style="text-align: center;">You have not added any cards to your database yet. Click Find a Card in the menu to get started adding cards to your database.</h1>
+      </div>
+
+      <div class="col">
+
+      </div>
+    </div>
+  <% } %>
+</div>
+
+<%- include('footer'); -%>

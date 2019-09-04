@@ -11,7 +11,7 @@ module.exports = {
 };
 
 function connect() {
-  const uri = process.env.DB_URI;
+  const uri = process.env.DB_URI_TESTING;
   mongoose.connect(uri, { useNewUrlParser: true });
 }
 

@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  font-family: verdana;
+}
+
+span {
+  color: darkgreen;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin: 3px;
+  padding: 0;
+}
+
+.pad-top {
+  padding-top: 10px;
+}
+
+.allCards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.aCbtn {
+  width: 100%;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.dBtn {
+  margin: 5px 0;
+  width: 100%;
+}
