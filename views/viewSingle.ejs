@@ -1,0 +1,42 @@
+<%- include('header'); -%>
+
+<% if (card) { %>
+  <div class="single">
+    <h1><%= card.cardName %></h1>
+    <div class="singleBox">
+      <img src="<%= card.imageUrl %>" alt="<%= card.cardName %>">
+      <div class="singleInfo">
+        <h5>Mana Cost: <span><%= card.manaCost %> </span></h5>
+        <h5>Color Identity: <span><%= card.colorIdentity %> </span></h5>
+        <h5>Type: <span><%= card.type %> </span></h5>
+        <h5>Rarity: <span><%= card.rarity %> </span></h5>
+        <h5>Set Name: <span><%= card.setName %> </span></h5>
+        <h5>Artist: <span><%= card.artist %> </span></h5>
+        <h5>Number: <span><%= card.number %> </span></h5>
+        <h5>Power: <span><%= card.power %> </span></h5>
+        <h5>Toughness: <span><%= card.toughness %> </span></h5>
+        <h5>Multi-Verse ID: <span><%= card.multiverseid %> </span></h5>
+      </div>
+    </div>
+    <hr>
+    <div class="priceBox">
+      <h4>Current Value: <%= card.price %></h4>
+    </div>
+    <hr>
+    <div class="">
+      <form class="" action="/cards/getValue" method="get">
+        <input type="hidden" name="updateCard" value="<%= card.id %>">
+        <input type="hidden" name="getValueCardName" value="<%= card.cardName %>">
+        <input type="hidden" name="getValueSetName" value="<%= card.setName %>">
+        <button type="submit" name="button" class="btn btn-success d-flex dBtn">Check Value</button>
+      </form>
+
+      <form class="" action="/cards/removeCard" method="post">
+        <input type="hidden" name="removeCard" value="<%= card.id %>">
+        <button type="submit" name="button" class="btn btn-danger d-flex dBtn">Delete Card</button>
+      </form>
+    </div>
+  </div>
+<% } %>
+
+<%- include('footer'); -%>

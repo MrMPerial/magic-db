@@ -1,5 +1,12 @@
 <%- include('header'); -%>
 
+<% if (allCards.length > 0) { %>
+  <div class="cardCount">
+    <p><strong>Total Count:</strong> <%= count %></p>
+    <p><strong>Total Value:</strong> $</p>
+  </div>
+<% } %>
+
 <div class="row pad-top">
   <div class="col-12">
     <% if (allCards) { %>
@@ -10,9 +17,15 @@
             <img src="<%= card.imageUrl %>" alt="<%= card.cardName %>">
             <div class="row">
               <div class="col-12 pad-top">
-                <!-- <button type="button" class="btn btn-info d-flex aCbtn" name="button">View Card</button> -->
+                <!-- View Card -->
+                <form class="" action="/cards/viewCard" method="get">
+                  <input type="hidden" name="viewCard" value="<%= card._id %>">
+                  <button type="submit" class="btn btn-info d-flex aCbtn" name="button">View Card</button>
+                </form>
+
+                <!-- Delete Card -->
                 <form class="" action="/cards/removeCard" method="post">
-                  <input type="hidden" name="cardId" value="<%= card._id %>">
+                  <input type="hidden" name="removeCard" value="<%= card._id %>">
                   <button type="submit" name="button" class="btn btn-danger d-flex dBtn">Delete Card</button>
                 </form>
               </div>

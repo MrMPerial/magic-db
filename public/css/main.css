@@ -12,8 +12,13 @@ ul {
 }
 
 li {
+  background-color: #F3FAF6;
+  border: 1px solid darkgray;
+  border-radius: 2px;
+  box-shadow: 0 4px 4px lightgray;
   margin: 3px;
-  padding: 0;
+  margin-bottom: 17px;
+  padding: 10px;
 }
 
 .pad-top {
@@ -37,4 +42,25 @@ li {
 .dBtn {
   margin: 5px 0;
   width: 100%;
+}
+
+.cardCount {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 10px 0 10px;
+  background-color: gray;
+  color: white;
+}
+
+.single {
+  margin: 20px auto;
+  width: 800px;
+}
+
+.singleBox {
+  display: flex;
+}
+
+.singleInfo {
+  margin-left: 20px;
 }
