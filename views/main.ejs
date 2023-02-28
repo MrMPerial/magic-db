@@ -65,13 +65,23 @@
         <input type="hidden" class="form-control" value="<%= card[0].toughness %>" name="toughness">
         <input type="hidden" class="form-control" value="<%= card[0].multiverseid %>" name="multiverseid">
       </div>
-      <button class="btn btn-success" type="submit" name="button">Add Your Card</button>
+      <div class="row">
+        <div class="col-md-6">
+          <br>
+          <br>
+          <button class="btn btn-success" type="submit" name="button">Add Your Card</button>
+        </div>
+        <div class="col-md-6">
+          <label for="qty">How many do you have?</label>
+          <input type="number" class="form-control" value="1" min="1" name="qty">
+        </div>
+      </div>
     </form>
 
     <hr>
 
     <form class="form-group" action="/" method="get">
-      <button class="btn btn-success" type="submit" name="button">Start Over</button>
+      <button class="btn btn-primary" type="submit" name="button">Start Over</button>
     </form>
     <% } %>
   </div>

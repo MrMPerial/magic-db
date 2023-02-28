@@ -63,7 +63,8 @@ router.get('/viewCard', (req, res) => {
       power: single.power,
       toughness: single.toughness,
       multiverseid: single.multiverseid,
-      price: single.price
+      price: single.price,
+      qty: single.qty
     }
     res.render('viewSingle', { card: card });
   });
@@ -104,7 +105,8 @@ router.post('/addNewCard', (req, res) => {
     toughness: req.body.toughness,
     multiverseid: req.body.multiverseid,
     imageUrl: req.body.imageUrl,
-    price: ""
+    price: "",
+    qty: req.body.qty
   };
   Card.addToDB(package);
   res.render('main', { card: null });

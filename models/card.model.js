@@ -16,7 +16,8 @@ const CardSchema = mongoose.Schema({
   toughness: String,
   multiverseid: Number,
   imageUrl: String,
-  price: Number
+  price: Number,
+  qty: Number
 });
 
 // DB module to export
@@ -37,7 +38,8 @@ module.exports.addToDB = (package) => {
     toughness: package.toughness,
     multiverseid: package.multiverseid,
     imageUrl: package.imageUrl,
-    price: package.price
+    price: package.price,
+    qty: package.qty
   });
   return newCard.save();
 }
